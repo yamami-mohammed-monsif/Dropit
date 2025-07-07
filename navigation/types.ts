@@ -1,4 +1,7 @@
 export type RootStackParamList = {
+  Splash: undefined;
+  Welcome: undefined;
+  Main: undefined;
   Home: undefined;
   // Add other screen params here
 };

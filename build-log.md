@@ -68,3 +68,62 @@
 - Using TypeScript for better type safety and development experience
 - Following React Native best practices for project structure
 - Using functional components and hooks exclusively
+
+## 2024-01-17 - Splash and Welcome Screens Implementation
+
+### 🔧 What was done
+
+#### Screen Implementation
+
+- Created SplashScreen with yellow background (#FFD95A) and centered logo
+- Created WelcomeScreen matching the provided design specifications
+- Updated navigation flow: Splash → Welcome → Main App
+- Added proper TypeScript navigation types
+
+#### Files Created/Modified
+
+- 📂 `screens/SplashScreen.tsx` - Splash screen with 2-second auto-navigation
+- 📂 `screens/WelcomeScreen.tsx` - Welcome screen matching design layout
+- 📂 `navigation/types.ts` - Added new screen types (Splash, Welcome, Main)
+- 📂 `navigation/RootNavigator.tsx` - Updated navigation stack order
+
+### 🧠 Internal Decisions
+
+- Used `navigation.replace()` instead of `navigate()` to prevent back navigation to splash
+- Implemented 2-second timer with cleanup in useEffect for splash screen
+- Used inline styles for specific colors (#FFD95A) that don't have Tailwind equivalents
+- Set image dimensions using Tailwind classes for consistency
+- Both "Get Started" and "Skip for now" buttons navigate to Main app (temporary)
+
+### ⚠️ Assumptions & Limitations
+
+- **Font Assumption**: Using system default fonts since custom fonts not specified
+- **Image Assets**: Assuming logo and welcome images exist in `/assets/` directory
+- **Navigation Flow**: Welcome screen buttons navigate to Main app (will change when auth is added)
+- **Responsive Design**: Fixed image sizes may need adjustment for different screen sizes
+- **Accessibility**: No accessibility labels added yet (should be added in future)
+
+### 🔜 Next Steps
+
+#### High Priority
+- Add authentication screens (Login/Signup) when designs are provided
+- Update Welcome screen navigation to point to auth flow
+- Add proper error handling for missing image assets
+
+#### Medium Priority
+- Add custom fonts if brand fonts are specified
+- Implement responsive image sizing
+- Add accessibility labels and screen reader support
+- Add loading states for image assets
+
+#### Low Priority
+- Add subtle animations to splash screen
+- Implement onboarding slides if multiple screens needed
+- Add haptic feedback to buttons
+
+### 📝 Technical Notes
+
+- Navigation stack now: `Splash → Welcome → Main (TabNavigator)`
+- All screens use SafeAreaView for proper device compatibility
+- TypeScript types properly extended for new navigation structure
+- Image assets referenced using `require()` for proper bundling
